@@ -41,7 +41,7 @@ def bus(request):
     destination = str(deh)
     print(type(deh),deh)
     transporrt_url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + '&destination=' + destination + '&sensor=true&transit_mode=bus' + '&key=AIzaSyAdnHOSUWloxZZSbTrhLZk0ST-RBKPQfUg'
-    url2 = 'https://maps.googleapis.com/maps/api/directions/json?origin='+origin+'&destination='+destination+'&sensor=true&key=AIzaSyAdnHOSUWloxZZSbTrhLZk0ST-RBKPQfUg'
+    url2 = 'https://maps.googleapis.com/maps/api/directions/json?origin='+origin+'&destination='+destination+'&sensor=true&mode=transit&key=AIzaSyAdnHOSUWloxZZSbTrhLZk0ST-RBKPQfUg'
     print(url2)
     r = requests.get(url=url2)
     x1 = r.json()
