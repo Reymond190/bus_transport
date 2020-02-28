@@ -13,6 +13,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
+
 input[type=text]{
   width: 60%;
   padding: 10px 15px;
@@ -40,23 +41,23 @@ button:hover {
 <button >Go Back</button><br>
 <h2>MTC STATUS</h2>
 
-<form method="post">
+<form id="theForm" method="get">
   {% csrf_token %}
 
   <div class="container">
     <label for="src"><b>Source</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id = 'a' type="text" placeholder="Enter Source" name="src" required style="width:350px;"><br>
+    <input type="text" placeholder="Enter Source" name="src" required style="width:350px;"><br>
 
     <label for="des"><b>Destination</b></label>
-    <input id = 'b' type="text" placeholder="Enter Destination" name="des" required style="width:350px;"><br>
+    <input type="text" placeholder="Enter Destination" name="des" required style="width:350px;"><br>
 
-    <button type="submit" onclick="myFunction()"  style="margin-left:200px;">Submit</button><br>
+    <button type="submit"  style="margin-left:200px;">Submit</button><br>
 
 <div>
-<h2 style="font-size: 25px">MTC Bus Status:</h2>
+<h2 style="font-size: 25px">MTC Bus Status:</h2><div id="div3"></div>
 
 
-<table id="tb1" class="table table-hover" Style="width:100%;">
+<table id="tb2" class="table table-hover" Style="width:100%;">
 <thead style="background-color:#d9d9d9">
 <tr style="font-size:13px;">
 <th>Bus_Number</th>
@@ -82,35 +83,46 @@ button:hover {
 
 </form>
 <!--<script>-->
-<!-- $.getJSON('',-->
-<!--    function (json) {-->
-
-<!--        var tr;-->
-<!--        for (var i = 0; i < json.length; i++) {-->
-<!--            tr = $('<tr/>');-->
-<!--            tr.append("<td>" + json[i].Bus_Number + "</td>");-->
-<!--            tr.append("<td>" + json[i].Distance + "</td>");-->
-<!--            tr.append("<td>" + json[i].Duration + "</td>");-->
-<!--            tr.append("<td>" + json[i].Departure_Time + "</td>");-->
-<!--			tr.append("<td>" + json[i].Arrival_Time + "</td>");-->
-<!--			tr.append("<td>" + json[i].Number_of_Stops + "</td>");-->
-<!--            $('#tb2').append(tr);-->
-<!--        }-->
-<!--    });-->
+ <!--$.getJSON('',-->
+    <!--function (json) {-->
+        <!--var tr;-->
+        <!--for (var i = 0; i < json.length; i++) {-->
+            <!--tr = $('<tr/>');-->
+            <!--tr.append("<td>" + json[i].Bus_Number + "</td>");-->
+            <!--tr.append("<td>" + json[i].Distance + "</td>");-->
+            <!--tr.append("<td>" + json[i].Duration + "</td>");-->
+            <!--tr.append("<td>" + json[i].Departure_Time + "</td>");-->
+			<!--tr.append("<td>" + json[i].Arrival_Time + "</td>");-->
+			<!--tr.append("<td>" + json[i].Number_of_Stops + "</td>");-->
+            <!--$('#tb2').append(tr);-->
+        <!--}-->
+    <!--});-->
 <!--</script>-->
 <script>
-function myFunction() {
 
-  $.ajax({
-    url: '/ajax',
-    data: {},
-    dataType: 'json',
-    success : function(data){
-        console.log(data);
-    },
-
-});
-}
+var frm = $('#theForm');
+    frm.submit(function () {
+        var tr;
+        $.ajax({
+            type: "GET",
+            url: '/ajax',
+            data: frm.serialize(),
+            success: function (data) {
+                tr = $('<tr/>');
+                tr.append("<td>" + data.bus_number + "</td>");
+                tr.append("<td>" + data.distance + "</td>");
+                tr.append("<td>" + data.duration + "</td>");
+                tr.append("<td>" + data.departure_time + "</td>");
+			    tr.append("<td>" + data.arrival_time + "</td>");
+			    tr.append("<td>" + data.number_of_stops + "</td>");
+            $('#tb2').append(tr);
+            },
+            error: function(data) {
+                $("#div3").html("Something went wrong!");
+            }
+        });
+        return false;
+    });
 
 
 </script>
