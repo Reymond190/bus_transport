@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>MTC</title>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text]{
+  width: 60%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+}
+button:hover {
+  opacity: 0.8;
+}
+</style>
+</head>
+<body>
+<button >Go Back</button><br>
+<h2>MTC STATUS</h2>
+
+<form method="post">
+  {% csrf_token %}
+
+  <div class="container">
+    <label for="src"><b>Source</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id = 'a' type="text" placeholder="Enter Source" name="src" required style="width:350px;"><br>
+
+    <label for="des"><b>Destination</b></label>
+    <input id = 'b' type="text" placeholder="Enter Destination" name="des" required style="width:350px;"><br>
+
+    <button type="submit" onclick="myFunction()"  style="margin-left:200px;">Submit</button><br>
+
+<div>
+<h2 style="font-size: 25px">MTC Bus Status:</h2>
+
+
+<table id="tb1" class="table table-hover" Style="width:100%;">
+<thead style="background-color:#d9d9d9">
+<tr style="font-size:13px;">
+<th>Bus_Number</th>
+<th>Distance</th>
+<th>Duration</th>
+<th>Departure_Time</th>
+<th>Arrival_Time</th>
+<th>Number_of_Stops</th>
+</tr>
+</thead>
+<tbody style="font-size:14px;">
+
+
+</tbody>
+</table>
+    <table class="table table-hover" Style="width:100%;">
+<thead>
+
+</thead>
+</table>
+</div>
+  </div>
+
+</form>
+<!--<script>-->
+<!-- $.getJSON('',-->
+<!--    function (json) {-->
+
+<!--        var tr;-->
+<!--        for (var i = 0; i < json.length; i++) {-->
+<!--            tr = $('<tr/>');-->
+<!--            tr.append("<td>" + json[i].Bus_Number + "</td>");-->
+<!--            tr.append("<td>" + json[i].Distance + "</td>");-->
+<!--            tr.append("<td>" + json[i].Duration + "</td>");-->
+<!--            tr.append("<td>" + json[i].Departure_Time + "</td>");-->
+<!--			tr.append("<td>" + json[i].Arrival_Time + "</td>");-->
+<!--			tr.append("<td>" + json[i].Number_of_Stops + "</td>");-->
+<!--            $('#tb2').append(tr);-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<script>
+function myFunction() {
+
+  $.ajax({
+    url: '/ajax',
+    data: {},
+    dataType: 'json',
+    success : function(data){
+        console.log(data);
+    },
+
+});
+}
+
+
+</script>
+</body>
+</html>

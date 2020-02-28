@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import path
+from bus.views import  bus, mtc, home
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+    # path('bus_transport/', bus_transport, name='bus_transport'),
+    path('home/',home, name= 'home'),
+    path('ajax/', bus, name='bus'),
+    path('mtc/', mtc, name='mtc'),
+
+    ]

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>SETC</title>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text]{
+  width: 60%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+}
+button:hover {
+  opacity: 0.8;
+}
+</style>
+</head>
+<body>
+<button onclick="myFunction()">Go Back</button><br>
+<h2>SETC STATUS</h2>
+
+<form action="" method="post">
+
+  <div class="container">
+    <label for="src"><b>Source</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" placeholder="Enter Source" name="src" required style="width:350px;"><br>
+
+    <label for="des"><b>Destination</b></label>
+    <input type="text" placeholder="Enter Destination" name="des" required style="width:350px;"><br>
+
+    <button type="submit" style="margin-left:200px;">Submit</button>
+  </div>
+
+</form>
+<script>
+function myFunction() {
+  location.replace("busstatus.html")
+}
+</script>
+</body>
+</html>

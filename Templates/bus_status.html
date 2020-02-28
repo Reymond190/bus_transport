@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>Bus Transport</title>
+
+</head>
+
+<body>
+<h3 style="text-align: center;"><b>BUS TRANSPORTATION</b></h3><br>
+<div class="container" >
+<div class="row">
+<div class="col-sm-6" style=" margin-right: 0px; padding-right:400px;">
+    <button type="button" class="btn btn-primary" style="height:60px;width:100px;" onclick="myFunction()">MTC</button>
+</div>
+<div class="col-sm-6" style=" margin-right: 0px; padding-left:300px;">
+    <button type="button" class="btn btn-primary" style="height:60px;width:100px;" onclick="myFunction1()">SETC</button>
+</div>
+</div>
+</div>
+<script>
+function myFunction() {
+  location.replace("mtc.html")
+}
+</script>
+<script>
+
+$.ajax({
+    url: '/ajax',
+    data: {'a':1,'b':2,'c':3},
+    dataType: 'xml',
+    complete : function(){
+        alert(this.url)
+    },
+    success: function(xml){
+    }
+});
+function myFunction1() {
+  location.replace("setc.html")
+}
+</script>
+</body>
+</html>
